@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Outline Presentasi STIK SIAP</title>
+    <link rel="icon" type="image/png" href="../public/stik_logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050816;
+            --bg-elevated: #0b1120;
+            --card: #020617;
+            --accent: #4f46e5;
+            --accent-soft: rgba(79, 70, 229, 0.15);
+            --accent-strong: #6366f1;
+            --text-main: #e5e7eb;
+            --text-soft: #9ca3af;
+            --border-subtle: rgba(148, 163, 184, 0.25);
+            --chip-bg: rgba(15, 23, 42, 0.9);
+            --chip-border: rgba(148, 163, 184, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top left, #1e293b 0, #020617 38%, #020617 100%);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 1120px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 24px 16px 40px;
+        }
+
+        @media (min-width: 768px) {
+            .page {
+                padding: 32px 24px 56px;
+            }
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 18px;
+            border-radius: 999px;
+            background: linear-gradient(120deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96));
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            box-shadow:
+                0 24px 60px rgba(15, 23, 42, 0.85),
+                0 0 0 1px rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(16px);
+            position: sticky;
+            top: 16px;
+            z-index: 20;
+        }
+
+        header-left {
+            display: flex;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo {
+            height: 34px;
+            width: 34px;
+            border-radius: 16px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: radial-gradient(circle at 30% 0, #38bdf8 0, #1e3a8a 40%, #020617 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e5e7eb;
+            font-size: 16px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.9);
+        }
+
+        .brand-text-title {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #e5e7eb;
+        }
+
+        .brand-text-subtitle {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .chip {
+            font-size: 11px;
+            padding: 5px 9px;
+            border-radius: 999px;
+            border: 1px solid var(--chip-border);
+            background: var(--chip-bg);
+            color: var(--text-soft);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .chip-primary {
+            border-color: rgba(129, 140, 248, 0.8);
+            background: rgba(79, 70, 229, 0.18);
+            color: #c7d2fe;
+        }
+
+        .chip-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: #22c55e;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+        }
+
+        .top-nav {
+            margin-top: 14px;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 2px;
+            scrollbar-width: none;
+        }
+
+        .top-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-link {
+            border-radius: 999px;
+            padding: 6px 11px;
+            font-size: 11px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: rgba(15, 23, 42, 0.9);
+            color: #cbd5f5;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .nav-link small {
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 9px;
+            color: #9ca3af;
+        }
+
+        .nav-link:hover {
+            border-color: rgba(129, 140, 248, 0.9);
+            background: rgba(30, 64, 175, 0.85);
+        }
+
+        main {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: minmax(0, 2.3fr) minmax(0, 1fr);
+            gap: 18px;
+        }
+
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                border-radius: 20px;
+            }
+            main {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .hero-card {
+            border-radius: 24px;
+            padding: 22px 22px 20px;
+            background:
+                radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.25) 0, transparent 40%),
+                radial-gradient(circle at 100% 0, rgba(129, 140, 248, 0.3) 0, transparent 46%),
+                var(--bg-elevated);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            box-shadow:
+                0 32px 80px rgba(15, 23, 42, 0.95),
+                0 0 0 1px rgba(15, 23, 42, 0.9);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: #9ca3af;
+            font-size: 11px;
+        }
+
+        .hero-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 10px 0 4px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 13px;
+            color: var(--text-soft);
+            max-width: 420px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 640px) {
+            .hero-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .hero-stat {
+            border-radius: 14px;
+            padding: 10px 10px 9px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hero-stat-label {
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #9ca3af;
+        }
+
+        .hero-stat-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .hero-fade {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 0 100%, rgba(15, 23, 42, 0.8), transparent 60%);
+            pointer-events: none;
+        }
+
+        .section-card {
+            border-radius: 18px;
+            padding: 16px 16px 14px;
+            background: linear-gradient(140deg, rgba(15, 23, 42, 0.98), #020617);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.9);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #9ca3af;
+        }
+
+        .pill {
+            border-radius: 999px;
+            padding: 3px 8px;
+            font-size: 10px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: #9ca3af;
+        }
+
+        .section-main-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .section-text {
+            font-size: 12px;
+            color: var(--text-soft);
+            margin-bottom: 8px;
+        }
+
+        .list {
+            margin: 0;
+            padding-left: 16px;
+            font-size: 12px;
+            color: var(--text-soft);
+        }
+
+        .list li + li {
+            margin-top: 4px;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 4px 7px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            color: #cbd5f5;
+        }
+
+        .timeline {
+            margin: 4px 0 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 8px;
+            align-items: flex-start;
+            font-size: 12px;
+            color: var(--text-soft);
+        }
+
+        .timeline-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            margin-top: 4px;
+            background: var(--accent-strong);
+            box-shadow: 0 0 12px rgba(129, 140, 248, 0.9);
+        }
+
+        .step-title {
+            font-weight: 500;
+            color: #e5e7eb;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 640px) {
+            .grid-2 {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .mini-card {
+            border-radius: 12px;
+            padding: 9px 9px 8px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            font-size: 11px;
+        }
+
+        .mini-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .screenshot-slot {
+            margin-top: 10px;
+            border-radius: 12px;
+            border: 1px dashed rgba(148, 163, 184, 0.6);
+            background: rgba(15, 23, 42, 0.85);
+            padding: 10px;
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        .screenshot-slot span {
+            font-weight: 500;
+            color: #e5e7eb;
+        }
+
+        .screenshot-images {
+            margin-top: 8px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .screenshot-images figure {
+            margin: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: rgba(15, 23, 42, 0.96);
+        }
+
+        .screenshot-images img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .screenshot-images figcaption {
+            padding: 6px 8px 7px;
+            font-size: 10px;
+            color: #e5e7eb;
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        footer {
+            max-width: 1120px;
+            width: 100%;
+            margin: 0 auto 16px;
+            padding: 4px 16px 0;
+            font-size: 11px;
+            color: #6b7280;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="brand">
+                <div class="brand-logo">S</div>
+                <div>
+                    <div class="brand-text-title">STIK SIAP</div>
+                    <div class="brand-text-subtitle">Sistem Informasi Administrasi Pembayaran</div>
+                </div>
+            </div>
+            <div class="chips">
+                <span class="chip chip-primary">
+                    <span class="chip-dot"></span>
+                    Outline presentasi pimpinan
+                </span>
+                <span class="chip">Versi ringkas & struktural</span>
+            </div>
+        </header>
+
+        <nav class="top-nav">
+            <a href="#slide-1" class="nav-link">
+                <span>Slide 1</span><small>Judul</small>
+            </a>
+            <a href="#slide-2-3" class="nav-link">
+                <span>2–3</span><small>Latar belakang</small>
+            </a>
+            <a href="#slide-4-6" class="nav-link">
+                <span>4–6</span><small>Teknologi & akses</small>
+            </a>
+            <a href="#slide-7-10" class="nav-link">
+                <span>7–10</span><small>Fitur</small>
+            </a>
+            <a href="#slide-11" class="nav-link">
+                <span>11</span><small>Alur kerja</small>
+            </a>
+            <a href="#slide-12" class="nav-link">
+                <span>12</span><small>Keamanan</small>
+            </a>
+            <a href="#slide-13" class="nav-link">
+                <span>13</span><small>Pemeliharaan</small>
+            </a>
+            <a href="#slide-14" class="nav-link">
+                <span>14</span><small>Kelebihan</small>
+            </a>
+            <a href="#slide-15-16" class="nav-link">
+                <span>15–16</span><small>Roadmap</small>
+            </a>
+        </nav>
+
+        <main>
+            <div class="column">
+                <section class="hero-card" id="slide-1">
+                    <div class="hero-badge">Slide 1 — Judul</div>
+                    <h1 class="hero-title">STIK SIAP — Sistem Informasi Administrasi Pembayaran</h1>
+                    <p class="hero-subtitle">
+                        Ringkasan singkat sistem pembayaran mahasiswa dari sudut pandang pimpinan:
+                        tujuan, fitur utama, keamanan, serta arah pengembangan jangka panjang.
+                    </p>
+                    <div class="hero-grid">
+                        <div class="hero-stat">
+                            <div class="hero-stat-label">Nama sistem</div>
+                            <div class="hero-stat-value">STIK SIAP</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-label">Fokus</div>
+                            <div class="hero-stat-value">Administrasi pembayaran mahasiswa end-to-end</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-label">Pengguna utama</div>
+                            <div class="hero-stat-value">Mahasiswa, Admin Keuangan, Akademik, Pimpinan</div>
+                        </div>
+                    </div>
+                    <div class="screenshot-slot">
+                        <span>Tampilan:</span> Halaman login awal STIK SIAP.
+                        <div class="screenshot-images">
+                            <figure>
+                                <img src="halaman login awal.png" alt="Halaman login awal STIK SIAP">
+                                <figcaption>Halaman login utama untuk mahasiswa dan petugas.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="hero-fade"></div>
+                </section>
+
+                <section class="section-card" id="slide-2-3">
+                    <div class="section-header">
+                        <div class="section-title">Slide 2–3</div>
+                        <span class="pill">Latar belakang & tujuan</span>
+                    </div>
+                    <div class="section-main-title">Latar belakang & gambaran umum</div>
+                    <p class="section-text">
+                        Sebelum ada STIK SIAP, data pembayaran mahasiswa tersebar dan sulit dipantau.
+                        Sistem ini dibuat sebagai satu pusat kebenaran data pembayaran mahasiswa.
+                    </p>
+                    <ul class="list">
+                        <li><strong>Masalah utama:</strong> sulit melihat posisi tunggakan, lebih bayar, dan riwayat pembayaran per mahasiswa secara cepat dan akurat.</li>
+                        <li><strong>Tujuan STIK SIAP:</strong> mengelola seluruh kewajiban pembayaran dari awal kuliah sampai lulus dalam satu sistem yang transparan & siap audit.</li>
+                        <li><strong>Konsep dasar:</strong> sistem berbasis <em>tagihan</em> per mahasiswa per semester, bukan langsung mencatat pembayaran tanpa dasar tagihan.</li>
+                    </ul>
+                    <div class="screenshot-slot">
+                        <span>Tampilan:</span> Portal pembiayaan mahasiswa.
+                        <div class="screenshot-images">
+                            <figure>
+                                <img src="dashboard Mahasiswa.png" alt="Portal pembiayaan / dashboard mahasiswa">
+                                <figcaption>Portal mahasiswa: ringkasan tagihan, tunggakan, dan lebih bayar.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-card" id="slide-4-6">
+                    <div class="section-header">
+                        <div class="section-title">Slide 4–6</div>
+                        <span class="pill">Teknologi & akses</span>
+                    </div>
+                    <div class="grid-2">
+                        <div class="mini-card">
+                            <div class="mini-title">Teknologi & bahasa</div>
+                            <p class="section-text">
+                                Sistem dibangun dengan teknologi modern yang umum di industri, sehingga mudah dirawat dan dikembangkan.
+                            </p>
+                            <ul class="list">
+                                <li><strong>Backend:</strong> Laravel (PHP) — framework standar industri.</li>
+                                <li><strong>Frontend:</strong> Blade (server-side rendering) + Tailwind CSS.</li>
+                                <li><strong>Database:</strong> MySQL / MariaDB (mendukung backup & restore penuh).</li>
+                                <li><strong>Keamanan teknis:</strong> autentikasi multi-guard, role & permission (RBAC), 2FA, rate limit login admin.</li>
+                            </ul>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-title">Akses & role pengguna</div>
+                            <p class="section-text">
+                                Akses ke sistem dibedakan berdasarkan jenis pengguna dan jalur login.
+                            </p>
+                            <ul class="list">
+                                <li><strong>Login umum:</strong> /login — untuk mahasiswa dan admin.</li>
+                                <li><strong>Login admin khusus:</strong> /msiap (atau path lain di konfigurasi) — hanya diketahui petugas.</li>
+                                <li><strong>Role utama:</strong> Mahasiswa, Super Admin, Admin Keuangan, Admin Akademik, Pimpinan.</li>
+                                <li>Setiap role memiliki menu dan batasan akses yang berbeda sesuai tanggung jawab.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-card" id="slide-7-10">
+                    <div class="section-header">
+                        <div class="section-title">Slide 7–10</div>
+                        <span class="pill">Fitur utama</span>
+                    </div>
+                    <div class="section-main-title">Fitur sistem (per kelompok pengguna)</div>
+                    <p class="section-text">
+                        Ringkasan fitur utama sistem berdasarkan kelompok pengguna: mahasiswa, petugas, dan pimpinan.
+                    </p>
+                    <div class="grid-2">
+                        <div class="mini-card">
+                            <div class="mini-title">Mahasiswa</div>
+                            <ul class="list">
+                                <li>Login dengan NIM ke portal mahasiswa.</li>
+                                <li>Melihat pembiayaan: tagihan semester berjalan, tunggakan, dan lebih bayar (sisa bayar).</li>
+                                <li>Melihat daftar tagihan per semester dengan rincian tiap jenis biaya.</li>
+                                <li>Melihat riwayat pembayaran lengkap, termasuk transaksi yang dibatalkan (void) dengan penanda.</li>
+                            </ul>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-title">Petugas & pimpinan</div>
+                            <ul class="list">
+                                <li>Generate tagihan per semester berdasarkan paket biaya.</li>
+                                <li>Input pembayaran per item tagihan (mendukung lebih bayar).</li>
+                                <li>Void pembayaran (dengan konfirmasi kode transaksi) dan catat refund lebih bayar disertai nota.</li>
+                                <li>Melihat dashboard 5 kartu dan laporan lengkap (ringkasan, mutasi, rekap kekurangan).</li>
+                                <li>Export Excel pembayaran & refund, cetak nota pembayaran dan nota refund.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="screenshot-slot">
+                        <span>Tampilan:</span> Contoh antarmuka utama per peran dan fitur keuangan.
+                        <div class="screenshot-images">
+                            <figure>
+                                <img src="dashboard Mahasiswa.png" alt="Tampilan portal mahasiswa STIK SIAP">
+                                <figcaption>Portal mahasiswa: ringkasan pembiayaan dan riwayat pembayaran.</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="Dashboard Admin Pembayaran.png" alt="Dashboard admin pembayaran STIK SIAP">
+                                <figcaption>Dashboard admin: statistik tagihan, terbayar, tunggakan, dan lebih bayar.</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="Dahsboard Pimpinan.png" alt="Dashboard pimpinan STIK SIAP">
+                                <figcaption>Dashboard pimpinan: ringkasan tinggi untuk pengambilan keputusan.</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="Generate Tagihan.png" alt="Halaman generate tagihan">
+                                <figcaption>Form generate tagihan per semester berdasarkan kampus, prodi, dan angkatan.</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="Input Pembayaran.png" alt="Halaman input pembayaran per mahasiswa">
+                                <figcaption>Input pembayaran per item tagihan, termasuk penanganan lebih bayar.</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="Laporan Pembayaran.png" alt="Laporan mutasi pembayaran">
+                                <figcaption>Laporan mutasi pembayaran dengan filter periode dan export Excel.</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="Rekap Refound.png" alt="Rekap refund dan lebih bayar">
+                                <figcaption>Rekap refund dan lebih bayar untuk tindak lanjut keuangan.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-card" id="slide-11">
+                    <div class="section-header">
+                        <div class="section-title">Slide 11</div>
+                        <span class="pill">Alur kerja</span>
+                    </div>
+                    <div class="section-main-title">Alur kerja harian (operasional)</div>
+                    <p class="section-text">Alur kerja harian yang benar-benar terjadi di sistem.</p>
+                    <ul class="timeline">
+                        <li class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <div>
+                                <div class="step-title">1. Persiapan semester</div>
+                                <div>Pengaturan master data & paket biaya, lalu generate tagihan.</div>
+                            </div>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <div>
+                                <div class="step-title">2. Pembayaran & koreksi</div>
+                                <div>Petugas input pembayaran, menangani salah input dengan fitur void, dan mengelola lebih bayar/refund.</div>
+                            </div>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <div>
+                                <div class="step-title">3. Monitoring & evaluasi</div>
+                                <div>Pimpinan memakai dashboard dan laporan untuk memantau posisi keuangan.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="column">
+                <section class="section-card" id="slide-12">
+                    <div class="section-header">
+                        <div class="section-title">Slide 12</div>
+                        <span class="pill">Keamanan & audit</span>
+                    </div>
+                    <div class="section-main-title">Keamanan sistem & jejak audit</div>
+                    <p class="section-text">
+                        STIK SIAP dirancang dengan fokus pada keamanan data dan keterlacakan setiap tindakan penting.
+                    </p>
+                    <ul class="list">
+                        <li><strong>Kontrol akses ketat:</strong> pembagian hak berdasarkan role (void & refund hanya keuangan khusus).</li>
+                        <li><strong>Perlindungan login:</strong> batas percobaan, penguncian sementara, dan 2FA untuk akun penting.</li>
+                        <li><strong>Jejak audit penuh:</strong> semua perubahan penting tercatat di activity log.</li>
+                        <li><strong>Data keuangan tidak dihapus:</strong> transaksi dibatalkan ditandai (void), bukan dihapus.</li>
+                    </ul>
+                    <div class="tag-row">
+                        <span class="tag">Tegaskan sistem siap audit jangka panjang</span>
+                    </div>
+                </section>
+
+                <section class="section-card" id="slide-13">
+                    <div class="section-header">
+                        <div class="section-title">Slide 13</div>
+                        <span class="pill">Pemeliharaan & backup</span>
+                    </div>
+                    <div class="section-main-title">Pemeliharaan data & keberlanjutan</div>
+                    <p class="section-text">
+                        Sistem memiliki fitur pemeliharaan data keuangan dan backup agar tetap sehat dalam jangka panjang.
+                    </p>
+                    <ul class="list">
+                        <li>Rekonsiliasi keuangan untuk memastikan angka terbayar & tunggakan selalu benar.</li>
+                        <li>Snapshot kondisi keuangan per tanggal (misalnya akhir bulan/tahun).</li>
+                        <li>Arsip transaksi lama untuk menjaga performa.</li>
+                        <li>Backup & restore database melalui antarmuka khusus.</li>
+                    </ul>
+                </section>
+
+                <section class="section-card" id="slide-14">
+                    <div class="section-header">
+                        <div class="section-title">Slide 14</div>
+                        <span class="pill">Kelebihan</span>
+                    </div>
+                    <div class="section-main-title">Kelebihan STIK SIAP</div>
+                    <p class="section-text">
+                        Nilai tambah STIK SIAP dibanding cara manual atau sistem yang terpisah-pisah.
+                    </p>
+                    <ul class="list">
+                        <li>Data keuangan mahasiswa terpusat, akurat, dan mudah ditelusuri.</li>
+                        <li>Dashboard dan laporan memberikan gambaran cepat untuk pimpinan.</li>
+                        <li>Fleksibel mengikuti kebijakan kampus (jenis biaya, prodi, angkatan, semester).</li>
+                        <li>Fondasi teknologi kuat dan umum, mudah dikembangkan oleh tim ke depan.</li>
+                    </ul>
+                </section>
+
+                <section class="section-card" id="slide-15-16">
+                    <div class="section-header">
+                        <div class="section-title">Slide 15–16</div>
+                        <span class="pill">Roadmap & penutup</span>
+                    </div>
+                    <div class="section-main-title">Roadmap pengembangan & pesan akhir</div>
+                    <p class="section-text">
+                        Akhiri dengan rencana upgrade jangka panjang dan ajakan dukungan dari pimpinan.
+                    </p>
+                    <div class="grid-2">
+                        <div class="mini-card">
+                            <div class="mini-title">Roadmap jangka menengah</div>
+                            <ul class="list">
+                                <li>Integrasi payment gateway.</li>
+                                <li>Notifikasi otomatis (email/WhatsApp).</li>
+                                <li>Denda & jatuh tempo, laporan arus kas.</li>
+                                <li>API untuk integrasi dengan sistem lain.</li>
+                            </ul>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-title">Penutup</div>
+                            <ul class="list">
+                                <li>Tekankan bahwa sistem sudah siap dipakai harian.</li>
+                                <li>Tunjukkan bahwa desainnya siap dikembangkan bersama kebutuhan kampus.</li>
+                                <li>Ajak pimpinan memberi arahan prioritas fitur selanjutnya.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <footer>
+        Outline ini bersifat panduan isi slide. Untuk presentasi, setiap blok dapat dijadikan 1 slide dan ditambah
+        screenshot tampilan sistem sesuai kebutuhan.
+    </footer>
+</body>
+</html>
+
