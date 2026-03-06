@@ -55,59 +55,6 @@ Dokumen teknis dan konsep lengkap ada di `docs/RINGKASAN_SISTEM.md`.
 
 ---
 
-## Instalasi (Development)
-
-1. Clone repo ke folder web server Anda (mis. `xampp/htdocs/stik_siap`).
-2. Install dependency:
-
-```bash
-composer install
-npm install
-npm run build   # atau npm run dev saat development
-```
-
-3. Salin environment:
-
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-4. Sesuaikan `.env`:
-
-- Konfigurasi database:
-
-```env
-DB_DATABASE=stik_siap
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-- Lisensi (development, contoh):
-
-```env
-LICENSE_BYPASS=true
-LICENSE_SIGNING_KEY=isi_kunci_acak_anda_di_sini
-```
-
-5. Migrasi & seeder:
-
-```bash
-php artisan migrate --seed
-```
-
-6. Jalankan server:
-
-```bash
-php artisan serve
-```
-
-7. Buka di browser: `http://localhost:8000`
-
-Untuk detail alur setup, role, dan lisensi, lihat `docs/RINGKASAN_SISTEM.md`.
-
----
-
 ## Lisensi Proyek
 
 Kode aplikasi ini **bukan** open source bebas-komersial. Lisensi proyek ada di file `LICENSE`:
